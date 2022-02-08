@@ -1,16 +1,25 @@
 <?php
+/**
+ *
+ * User: luoxingchang
+ * Date: 2/8/2022
+ * Email: <desireluo@outlook.com>
+ **/
+
 namespace App\Api;
+
+
 use PhalApi\Api;
 
-/**
- * 默认接口服务类
- * @author: dogstar <chanzonghuang@gmail.com> 2014-10-04
- */
-class Site extends Api {
-    public function getRules() {
+class Javi extends Api
+{
+
+    public function getRules()
+    {
         return array(
             'index' => array(
-                'username'  => array('name' => 'username', 'default' => 'luoxingchang', 'desc' => '用户名'),
+                'username' => array('name' => 'username', 'default' => 'luoxingchang', 'desc' => '用户名'),
+                'realname' => array('name' => 'realname', 'default' => '罗兴昌', 'desc' => '真实姓名'),
             ),
         );
     }
@@ -24,11 +33,14 @@ class Site extends Api {
      * @return int time 当前时间戳
      * @exception 400 非法请求，参数传递错误
      */
-    public function index() {
+    public function index()
+    {
         return array(
             'title' => 'Hello ' . $this->username,
+            'realname' => $this->realname,
             'version' => PHALAPI_VERSION,
             'time' => $_SERVER['REQUEST_TIME'],
         );
     }
+
 }
